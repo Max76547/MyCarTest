@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/toolbar_main"
+        android:id="@+id/toolbar" />
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/work_text"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:focusable="false"
+        android:inputType="textPersonName"
+        android:background="@android:color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="@string/str_change_mileage"/>
+
+    <EditText
+        android:id="@+id/edit_change_mileage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:inputType="number"
+        android:text="введите пробег при замене"
+        android:background="@android:color/transparent"
+        android:focusable="false"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="24sp"
+        android:text="@string/str_interval"/>
+
+    <EditText
+        android:id="@+id/edit_change_nxt_mileage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:inputType="number"
+        android:text="введите пробег при следующей замене"
+        android:background="@android:color/transparent"
+        android:focusable="false"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="@string/str_my_mileage"/>
+
+    <TextView
+        android:id="@+id/edit_my_mileage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="24sp"
+        android:text="@string/str_my_mileage"
+        android:background="@android:color/transparent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="@string/str_nxt_change_mileage"/>
+    <TextView
+        android:id="@+id/itog_zamen"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="@string/str_nxt_change_mileage"/>
+
+    <Button
+        android:id="@+id/btn_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="onClickDetail"
+        android:text="@string/change_data" />
+
+    <ImageView
+        android:id="@+id/work_image"
+        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:adjustViewBounds="true"/>
+</LinearLayout>

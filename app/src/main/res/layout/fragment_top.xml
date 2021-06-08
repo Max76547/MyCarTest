@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/info_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/fon_car4"
+            android:contentDescription="@string/fon_car_image"/>
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#8D1E1E1E"
+    tools:context=".TopFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textColor="@color/clr_blue"
+        android:text="Название авто: " />
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:textColor="@color/txt_clr_main"
+        android:textSize="24sp"
+        android:text="Введите название авто " />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:textSize="30sp"
+        android:textColor="@color/clr_blue"
+        android:text="Год выпуска: " />
+
+    <TextView
+        android:id="@+id/textYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/txt_clr_main"
+        android:textSize="24sp"
+        android:layout_marginBottom="24dp"
+        android:text="Введите год выпуска " />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textColor="@color/clr_blue"
+        android:text="Пробег: " />
+
+    <TextView
+        android:id="@+id/textMileage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_marginBottom="24dp"
+        android:textColor="@color/txt_clr_main"
+        android:text=" Введите пробег " />
+
+    <Button
+        android:id="@+id/button"
+        android:onClick="onClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/change_data" />
+
+
+</LinearLayout>
+    </FrameLayout>
+</androidx.core.widget.NestedScrollView>

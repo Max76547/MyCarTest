@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">MyCarTest</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="top_tab">Общие данные</string>
+    <string name="work_tab">Замены</string>
+    <string name="fon_car_image">Фон для авто</string>
+    <string name="change_data">Изменить данные</string>
+    <string name="str_mileage">Введите пробег:</string>
+    <string name="str_year">Введите год выпуска:</string>
+    <string name="str_enter">Применить</string>
+    <string name="str_name">Введите название авто:</string>
+    <string name="str_change_mileage">Пробег при замене (км):</string>
+    <string name="str_interval">Интервал замен (км):</string>
+    <string name="str_nxt_change_mileage">Следующая замена (км):</string>
+    <string name="str_my_mileage">Текущий пробег (км):</string>
+
+    <string-array name="str_work">
+        <item>Замены масла</item>
+        <item>Замены ремня ГРМ</item>
+    </string-array>
+
+</resources>
