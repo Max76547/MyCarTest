@@ -83,10 +83,6 @@ public class WorkDetailActivity extends AppCompatActivity {
                 String strNxtMileage = String.valueOf(k);
                 textSummaMileage.setText(strNxtMileage);
 
-                //заполнение изображения
-                ImageView imageView = findViewById(R.id.work_image);
-                imageView.setImageDrawable(ContextCompat.getDrawable(this,imageId));
-                imageView.setContentDescription(name);
 
             }
 //закрываем курсор и базу данных
