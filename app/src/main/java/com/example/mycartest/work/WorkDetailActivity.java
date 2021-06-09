@@ -18,6 +18,9 @@ import android.widget.ImageView;
 import com.example.mycartest.MainActivity;
 import com.example.mycartest.R;
 import com.example.mycartest.sqlite.CarDatabaseHelper;
+
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +49,11 @@ public class WorkDetailActivity extends AppCompatActivity {
         TextView textMyMileage= findViewById(R.id.edit_my_mileage);
         textMyMileage.setText(workMileage);
         TextView textSummaMileage = findViewById(R.id.itog_zamen);
+        TextView textProcent = findViewById(R.id.procents);
+
+        ProgressBar progressBar = findViewById(R.id.progressBar);
+
+
 
       button = findViewById(R.id.btn_change);
 //(создаем курсор)----------------------------
@@ -82,6 +90,10 @@ public class WorkDetailActivity extends AppCompatActivity {
                 int k = Integer.parseInt(mileage) + Integer.parseInt(nxtMileage);
                 String strNxtMileage = String.valueOf(k);
                 textSummaMileage.setText(strNxtMileage);
+
+                int procent = (Integer.parseInt(workMileage)-Integer.parseInt(mileage))*100/Integer.parseInt(nxtMileage);
+                progressBar.setProgress(procent);
+                textProcent.setText(procent + "%");
 
 
             }
