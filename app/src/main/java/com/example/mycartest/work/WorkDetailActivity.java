@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+
 import com.example.mycartest.MainActivity;
 import com.example.mycartest.R;
 import com.example.mycartest.sqlite.CarDatabaseHelper;
@@ -29,11 +30,11 @@ public class WorkDetailActivity extends AppCompatActivity {
     public static final String EXTRA_WORK_ID = "workId";
     public static final String EXTRA_MILEAGE = "workMileage";
 
-   private EditText textName;
-   private EditText textMileage;
-   private EditText textNxtMileage;
-    private  Button button;
-   private int workId;
+    private EditText textName;
+    private EditText textMileage;
+    private EditText textNxtMileage;
+    private Button button;
+    private int workId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +44,10 @@ public class WorkDetailActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        workId = (Integer)getIntent().getExtras().get(EXTRA_WORK_ID);
-        String workMileage = (String)getIntent().getExtras().get(EXTRA_MILEAGE);
+        workId = (Integer) getIntent().getExtras().get(EXTRA_WORK_ID);
+        String workMileage = (String) getIntent().getExtras().get(EXTRA_MILEAGE);
 
-        TextView textMyMileage= findViewById(R.id.edit_my_mileage);
+        TextView textMyMileage = findViewById(R.id.edit_my_mileage);
         textMyMileage.setText(workMileage);
         TextView textSummaMileage = findViewById(R.id.itog_zamen);
         TextView textProcent = findViewById(R.id.procents);
@@ -54,8 +55,7 @@ public class WorkDetailActivity extends AppCompatActivity {
         ProgressBar progressBar = findViewById(R.id.progressBar);
 
 
-
-      button = findViewById(R.id.btn_change);
+        button = findViewById(R.id.btn_change);
 //(создаем курсор)----------------------------
 //получаем ссылку на помощника SQLite
         SQLiteOpenHelper carDatabaseHelper = new CarDatabaseHelper(this);
@@ -67,7 +67,7 @@ public class WorkDetailActivity extends AppCompatActivity {
             Cursor cursor = db.query("GENERALDATA",
                     new String[]{"NAME", "MILEAGE", "IMAGE_RESOURCE_ID", "NXTMILEAGE"},
                     "_id = ?",
-                    new String[] {Integer.toString(workId+2)}, //позицию нужно увеличить на 2, потому что адаптер передает позицию с 0, a 1 позиция это имя авто
+                    new String[]{Integer.toString(workId + 2)}, //позицию нужно увеличить на 2, потому что адаптер передает позицию с 0, a 1 позиция это имя авто
                     null, null, null);
 
 //переход к первой записи курсора
@@ -75,7 +75,7 @@ public class WorkDetailActivity extends AppCompatActivity {
 //получение данных напитка из курсора
                 String name = cursor.getString(0);
                 String mileage = cursor.getString(1);
-                int imageId =  cursor.getInt(2);
+                int imageId = cursor.getInt(2);
                 String nxtMileage = cursor.getString(3);
 
 
@@ -91,7 +91,7 @@ public class WorkDetailActivity extends AppCompatActivity {
                 String strNxtMileage = String.valueOf(k);
                 textSummaMileage.setText(strNxtMileage);
 
-                int procent = (Integer.parseInt(workMileage)-Integer.parseInt(mileage))*100/Integer.parseInt(nxtMileage);
+                int procent = (Integer.parseInt(workMileage) - Integer.parseInt(mileage)) * 100 / Integer.parseInt(nxtMileage);
                 progressBar.setProgress(procent);
                 textProcent.setText(procent + "%");
 
@@ -101,7 +101,7 @@ public class WorkDetailActivity extends AppCompatActivity {
             cursor.close();
             db.close();
 
-        } catch(SQLiteException e) {
+        } catch (SQLiteException e) {
             Toast toast = Toast.makeText(this,
                     "Database unavailable",
                     Toast.LENGTH_SHORT);
@@ -115,24 +115,26 @@ public class WorkDetailActivity extends AppCompatActivity {
 
     public void onClickDetail(View view) {
 
-        if (button.getText().equals("Изменить данные")){
-          textName.setFocusableInTouchMode(true);
-          textMileage.setFocusableInTouchMode(true);
-          textNxtMileage.setFocusableInTouchMode(true);
-           button.setText("Сохранить изменения");
+        if (button.getText().equals("Изменить данные")) {
+            textName.setFocusableInTouchMode(true);
+            textName.setTextColor(getResources().getColor(R.color.clr_blue)); //устанавливаем цвет фона кнопки при нажатии ярче
+            textMileage.setFocusableInTouchMode(true);
+            textMileage.setTextColor(getResources().getColor(R.color.clr_blue)); //устанавливаем цвет фона кнопки при нажатии ярче
+            textNxtMileage.setFocusableInTouchMode(true);
+            textNxtMileage.setTextColor(getResources().getColor(R.color.clr_blue)); //устанавливаем цвет фона кнопки при нажатии ярче
+            button.setText("Сохранить изменения");
 
-        }
-        else {
+        } else {
             String topNames = textName.getText().toString();
             String topMileage = textMileage.getText().toString();
             String topNxtMileage = textNxtMileage.getText().toString();
             //обновляем данные в базе
             ContentValues topValues = new ContentValues();
             topValues.put("NAME", topNames);
-            topValues.put ("MILEAGE", topMileage);
-            topValues.put ("NXTMILEAGE", topNxtMileage);
+            topValues.put("MILEAGE", topMileage);
+            topValues.put("NXTMILEAGE", topNxtMileage);
 //получаем ссылку на помощника SQLite
-            SQLiteOpenHelper carDatabaseHelper = new CarDatabaseHelper( this );
+            SQLiteOpenHelper carDatabaseHelper = new CarDatabaseHelper(this);
 // Чтобы избежать исключения, добавляем обработчик исключения
             try {
 //доступ к базе данных только для чтения
@@ -140,10 +142,10 @@ public class WorkDetailActivity extends AppCompatActivity {
                 db.update("GENERALDATA",
                         topValues,
                         "_id=?",
-                        new String[] { Integer.toString(workId+2) } );
+                        new String[]{Integer.toString(workId + 2)});
                 db.close();
 
-            } catch(SQLiteException e) {
+            } catch (SQLiteException e) {
                 Toast toast = Toast.makeText(this,
                         "Database unavailable",
                         Toast.LENGTH_SHORT);
@@ -155,7 +157,7 @@ public class WorkDetailActivity extends AppCompatActivity {
             toast.show();
 
 
-        button.setText("Изменить данные");
+            button.setText("Изменить данные");
 
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

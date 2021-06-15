@@ -9,7 +9,7 @@
     <string name="str_year">Введите год выпуска:</string>
     <string name="str_enter">Применить</string>
     <string name="str_name">Введите название авто:</string>
-    <string name="str_change_mileage">Пробег при замене (км):</string>
+    <string name="str_change_mileage">Пробег до замены (км):</string>
     <string name="str_interval">Интервал замен (км):</string>
     <string name="str_nxt_change_mileage">Следующая замена (км):</string>
     <string name="str_my_mileage">Текущий пробег (км):</string>
