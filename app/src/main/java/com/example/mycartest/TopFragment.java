@@ -67,7 +67,7 @@ public class TopFragment extends Fragment implements View.OnClickListener {
            SQLiteDatabase db = carDatabaseHelper.getReadableDatabase();
 //Код чтения всех данных из базы (создаем курсор)
            Cursor cursor = db.query("GENERALDATA",
-                   new String[] {"NAME", "MILEAGE", "IMAGE_RESOURCE_ID"},
+                   new String[] {"NAME", "MILEAGE", "NXTMILEAGE"},
                    null, null, null, null, null); //читаем все данные из таблицы
            if (cursor.moveToFirst()){
 

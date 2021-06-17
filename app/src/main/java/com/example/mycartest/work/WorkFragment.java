@@ -26,14 +26,15 @@ import java.util.Objects;
 public class WorkFragment extends Fragment {
     //Эти приватные переменные добавляются для того, чтобы базу данных и курсор мож-
 //но было закрыть в методе onDestroy().
-   private String[] replaceNames;
-  private   String[] replaceMileage ;
-   private String[] replaceNxtMileage ;
-    private String workName;
-   private int[] replaceImages ;
-
     private SQLiteDatabase db;
     private Cursor cursor;
+
+    private String[] replaceNames; //переменная для названия замены
+    private   String[] replaceMileage ; //переменная для пробега до замены детали
+    private String[] replaceNxtMileage ; //переменная для интервала замены пробега
+    private String mainMileage; //переменная для получения пробега авто
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,7 +47,7 @@ public class WorkFragment extends Fragment {
         SetupCursor();
 
         //массивы передаются адаптеру
-        CaptionedImagesAdapter adapter = new CaptionedImagesAdapter(replaceNames, replaceImages, replaceMileage, replaceNxtMileage);
+        CaptionedImagesAdapter adapter = new CaptionedImagesAdapter(replaceNames, replaceMileage, replaceNxtMileage);
         workRecycle.setAdapter(adapter);
         //отображение карточек в виде списка
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -57,7 +58,7 @@ public class WorkFragment extends Fragment {
         adapter.setListener(position -> {
             Intent intent = new Intent(getActivity(), WorkDetailActivity.class);
             intent.putExtra(WorkDetailActivity.EXTRA_WORK_ID, position);
-            intent.putExtra(WorkDetailActivity.EXTRA_MILEAGE, workName);
+            intent.putExtra(WorkDetailActivity.EXTRA_MILEAGE, mainMileage);
             Objects.requireNonNull(getActivity()).startActivity(intent);
         });
 
@@ -86,7 +87,7 @@ public class WorkFragment extends Fragment {
             db = carDatabaseHelper.getWritableDatabase();
 //Код чтения всех данных из базы (создаем курсор)
             cursor = db.query("GENERALDATA",
-                    new String[] {"NAME", "MILEAGE", "IMAGE_RESOURCE_ID",
+                    new String[] {"NAME", "MILEAGE",
                             "NXTMILEAGE"},
                     null, null, null, null, null); //читаем все данные из таблицы
 
@@ -95,30 +96,29 @@ public class WorkFragment extends Fragment {
             int count = 0; //переменная для наращивания счета для массива
             replaceNames = new String[allCount];
             replaceMileage = new String[allCount];
-            replaceImages = new int[allCount];
+            replaceNxtMileage  = new String[allCount];
+
             String[] nxtMileage = new String[allCount];
             int[] k = new int[allCount];
-            replaceNxtMileage  = new String[allCount];
+
             if (cursor.moveToFirst()){
-                workName =cursor.getString(1);
+                mainMileage =cursor.getString(1); //получаем пробег
             }
             while (cursor.moveToNext()){
 
                 //создаем строковый массив и заносим туда все имена
                 replaceNames[count] = cursor.getString(0);
 
-                //создаем численный массив и заносим туда все данные о пробеге
+                //создаем строковый массив и заносим туда все данные о пробеге
                 replaceMileage[count] =cursor.getString(1);
 
-                //аналогично и с изображениями
-                replaceImages[count] =cursor.getInt(2);
-
-                nxtMileage[count] = cursor.getString(3);
+                //создаем строковый массив и заносим туда все данные об интервале замен
+                nxtMileage[count] = cursor.getString(2);
 
                 //получаем значение для пробега при следующей замене
                 //String.valueOf(a) переводит переменную int в String
-                 k[count] = Integer.parseInt(replaceMileage[count]) + Integer.parseInt(nxtMileage[count]);
-                 replaceNxtMileage[count]= String.valueOf(k[count]);
+                k[count] = Integer.parseInt(replaceMileage[count]) + Integer.parseInt(nxtMileage[count]);
+                replaceNxtMileage[count]= String.valueOf(k[count]);
 
                 count++;
             }

@@ -39,7 +39,7 @@ public class ChangeData extends AppCompatActivity {
             SQLiteDatabase db = carDatabaseHelper.getReadableDatabase();
 //Код чтения всех данных из базы (создаем курсор)
             Cursor cursor = db.query("GENERALDATA",
-                    new String[] {"NAME", "MILEAGE", "IMAGE_RESOURCE_ID"},
+                    new String[] {"NAME", "MILEAGE", "NXTMILEAGE"},
                     null, null, null, null, null); //читаем все данные из таблицы
             if (cursor.moveToFirst()){
 
@@ -77,7 +77,7 @@ public class ChangeData extends AppCompatActivity {
         ContentValues topValues = new ContentValues();
         topValues.put("NAME", topNames);
         topValues.put ("MILEAGE", topMileage);
-        topValues.put ("IMAGE_RESOURCE_ID", topYear);
+        topValues.put ("NXTMILEAGE", topYear);
 //получаем ссылку на помощника SQLite
         SQLiteOpenHelper carDatabaseHelper = new CarDatabaseHelper( this );
 // Чтобы избежать исключения, добавляем обработчик исключения

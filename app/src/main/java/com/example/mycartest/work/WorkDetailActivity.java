@@ -65,7 +65,7 @@ public class WorkDetailActivity extends AppCompatActivity {
             SQLiteDatabase db = carDatabaseHelper.getReadableDatabase();
             //Код чтения данных из базы
             Cursor cursor = db.query("GENERALDATA",
-                    new String[]{"NAME", "MILEAGE", "IMAGE_RESOURCE_ID", "NXTMILEAGE"},
+                    new String[]{"NAME", "MILEAGE", "NXTMILEAGE"},
                     "_id = ?",
                     new String[]{Integer.toString(workId + 2)}, //позицию нужно увеличить на 2, потому что адаптер передает позицию с 0, a 1 позиция это имя авто
                     null, null, null);
@@ -75,8 +75,7 @@ public class WorkDetailActivity extends AppCompatActivity {
 //получение данных напитка из курсора
                 String name = cursor.getString(0);
                 String mileage = cursor.getString(1);
-                int imageId = cursor.getInt(2);
-                String nxtMileage = cursor.getString(3);
+                String nxtMileage = cursor.getString(2);
 
 
 //заполнение названия замены

@@ -16,7 +16,6 @@ public class CaptionedImagesAdapter extends
     //для этого мы расширяем класс RecyclerView.Adapter и переопределяем его различные методы
 
     private String[] captions; //переменные для хнанения строк и id
-    private int[] imageIds;
     private Listener listener; //добавим объект listener
     private String[] mileage;
     private String[] nxt_mileage;
@@ -39,9 +38,8 @@ public class CaptionedImagesAdapter extends
     }
 
     //создаем конструктор для передачи данных
-    public CaptionedImagesAdapter(String[] captions, int[] imageIds, String[] mileage, String[] nxt_mileage){
+    public CaptionedImagesAdapter(String[] captions, String[] mileage, String[] nxt_mileage){
         this.captions = captions;
-        this.imageIds = imageIds;
         this.mileage = mileage;
         this.nxt_mileage = nxt_mileage;
 
@@ -75,11 +73,7 @@ public class CaptionedImagesAdapter extends
         //ременную position необходимо снабдить модификатором final,
         //так как она используется во внутреннем классе
         CardView cardView = holder.cardView;
-        ImageView imageView = (ImageView)cardView.findViewById(R.id.info_image);
-        Drawable drawable =
-                ContextCompat.getDrawable(cardView.getContext(), imageIds[position]);
-        imageView.setImageDrawable(drawable);
-        imageView.setContentDescription(captions[position]);
+
         TextView textView = (TextView)cardView.findViewById(R.id.info_text);
         textView.setText(captions[position]);
         TextView textMileage = (TextView)cardView.findViewById(R.id.mileage_text);
@@ -100,5 +94,3 @@ public class CaptionedImagesAdapter extends
     }
 
 }
-
-
