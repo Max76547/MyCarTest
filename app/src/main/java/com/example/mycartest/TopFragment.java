@@ -53,7 +53,6 @@ public class TopFragment extends Fragment implements View.OnClickListener {
             TextView textMileage = view.findViewById(R.id.textMileage);
             textMileage.setText(topMileage);
         }
-
     }
 
     //получаем ссылку на базу данных
