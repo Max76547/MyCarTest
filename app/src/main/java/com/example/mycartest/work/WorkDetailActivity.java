@@ -40,7 +40,7 @@ public class WorkDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_work_detail);
-//Set the toolbar as the activity's app bar
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -56,12 +56,12 @@ public class WorkDetailActivity extends AppCompatActivity {
 
 
         button = findViewById(R.id.btn_change);
-//(создаем курсор)----------------------------
-//получаем ссылку на помощника SQLite
+        /*(создаем курсор)----------------------------
+         *получаем ссылку на помощника SQLite*/
         SQLiteOpenHelper carDatabaseHelper = new CarDatabaseHelper(this);
-// Чтобы избежать исключения, добавляем обработчик исключения
+        // Чтобы избежать исключения, добавляем обработчик исключения
         try {
-//доступ к базе данных только для чтения
+            //доступ к базе данных только для чтения
             SQLiteDatabase db = carDatabaseHelper.getReadableDatabase();
             //Код чтения данных из базы
             Cursor cursor = db.query("GENERALDATA",
@@ -70,15 +70,14 @@ public class WorkDetailActivity extends AppCompatActivity {
                     new String[]{Integer.toString(workId + 2)}, //позицию нужно увеличить на 2, потому что адаптер передает позицию с 0, a 1 позиция это имя авто
                     null, null, null);
 
-//переход к первой записи курсора
+            //переход к первой записи курсора
             if (cursor.moveToFirst()) {
-//получение данных напитка из курсора
+                //получение данных напитка из курсора
                 String name = cursor.getString(0);
                 String mileage = cursor.getString(1);
                 String nxtMileage = cursor.getString(2);
 
-
-//заполнение названия замены
+                //заполнение названия замены
                 textName = findViewById(R.id.work_text);
                 textName.setText(name);
                 textMileage = findViewById(R.id.edit_change_mileage);
@@ -93,8 +92,6 @@ public class WorkDetailActivity extends AppCompatActivity {
                 int procent = (Integer.parseInt(workMileage) - Integer.parseInt(mileage)) * 100 / Integer.parseInt(nxtMileage);
                 progressBar.setProgress(procent);
                 textProcent.setText(procent + "%");
-
-
             }
 //закрываем курсор и базу данных
             cursor.close();
@@ -106,10 +103,7 @@ public class WorkDetailActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT);
             toast.show();
         }
-
-
         //------------------------------------------------------------------
-
     }
 
     public void onClickDetail(View view) {
@@ -132,11 +126,11 @@ public class WorkDetailActivity extends AppCompatActivity {
             topValues.put("NAME", topNames);
             topValues.put("MILEAGE", topMileage);
             topValues.put("NXTMILEAGE", topNxtMileage);
-//получаем ссылку на помощника SQLite
+            //получаем ссылку на помощника SQLite
             SQLiteOpenHelper carDatabaseHelper = new CarDatabaseHelper(this);
-// Чтобы избежать исключения, добавляем обработчик исключения
+            // Чтобы избежать исключения, добавляем обработчик исключения
             try {
-//доступ к базе данных только для чтения
+            //доступ к базе данных только для чтения
                 SQLiteDatabase db = carDatabaseHelper.getReadableDatabase();
                 db.update("GENERALDATA",
                         topValues,
@@ -155,9 +149,7 @@ public class WorkDetailActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT);
             toast.show();
 
-
             button.setText("Изменить данные");
-
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }

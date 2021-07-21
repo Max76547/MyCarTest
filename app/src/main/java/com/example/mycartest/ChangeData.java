@@ -37,7 +37,7 @@ public class ChangeData extends AppCompatActivity {
         try {
             //будем читать данные из базы
             SQLiteDatabase db = carDatabaseHelper.getReadableDatabase();
-//Код чтения всех данных из базы (создаем курсор)
+            //Код чтения всех данных из базы (создаем курсор)
             Cursor cursor = db.query("GENERALDATA",
                     new String[] {"NAME", "MILEAGE", "NXTMILEAGE"},
                     null, null, null, null, null); //читаем все данные из таблицы
@@ -65,8 +65,6 @@ public class ChangeData extends AppCompatActivity {
                     Toast.LENGTH_SHORT);
             toast.show();
         }
-
-
     }
 
     public void onClick(View view) {
@@ -78,11 +76,11 @@ public class ChangeData extends AppCompatActivity {
         topValues.put("NAME", topNames);
         topValues.put ("MILEAGE", topMileage);
         topValues.put ("NXTMILEAGE", topYear);
-//получаем ссылку на помощника SQLite
+        //получаем ссылку на помощника SQLite
         SQLiteOpenHelper carDatabaseHelper = new CarDatabaseHelper( this );
-// Чтобы избежать исключения, добавляем обработчик исключения
+        // Чтобы избежать исключения, добавляем обработчик исключения
         try {
-//доступ к базе данных
+        //доступ к базе данных
             SQLiteDatabase db = carDatabaseHelper.getWritableDatabase();
             db.update("GENERALDATA",
                     topValues,
@@ -104,7 +102,5 @@ public class ChangeData extends AppCompatActivity {
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-
-
     }
 }

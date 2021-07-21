@@ -13,6 +13,10 @@
     <string name="str_interval">Интервал замен (км):</string>
     <string name="str_nxt_change_mileage">Следующая замена (км):</string>
     <string name="str_my_mileage">Текущий пробег (км):</string>
+    <string name="add_name_auto">Введите название авто</string>
+    <string name="add_year">Введите год выпуска</string>
+    <string name="add_mileage">Введите пробег</string>
+    <string name="my_car">My car</string>
 
     <string-array name="str_work">
         <item>Замены масла</item>

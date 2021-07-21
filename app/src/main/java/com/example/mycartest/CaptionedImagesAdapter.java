@@ -34,7 +34,6 @@ public class CaptionedImagesAdapter extends
             super(v); //суперкласс включает метаданные, необходимые для правильной работы адаптера
             cardView = v;
         }
-
     }
 
     //создаем конструктор для передачи данных
@@ -42,17 +41,16 @@ public class CaptionedImagesAdapter extends
         this.captions = captions;
         this.mileage = mileage;
         this.nxt_mileage = nxt_mileage;
-
     }
 
     //метод вызывается, когда  RecyclerView требуется создать ViewHolder
     @Override
     public CaptionedImagesAdapter.ViewHolder onCreateViewHolder(
             ViewGroup parent, int viewType){
-//Код создания экземпляра ViewHolder
+    //Код создания экземпляра ViewHolder
         CardView cv = (CardView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_captioned_image, parent, false);
-        //Получает объект LayoutInflater,к. преобразует макет в CardView
+    //Получает объект LayoutInflater,к. преобразует макет в CardView
         return new ViewHolder(cv);
     }
 
@@ -70,7 +68,7 @@ public class CaptionedImagesAdapter extends
     // ViewHolder для новой порции данных.
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position){
-        //ременную position необходимо снабдить модификатором final,
+        //переменную position необходимо снабдить модификатором final,
         //так как она используется во внутреннем классе
         CardView cardView = holder.cardView;
 
@@ -82,8 +80,8 @@ public class CaptionedImagesAdapter extends
         textNxtMileage.setText(nxt_mileage[position]);
 
         //Интерфейс добавляетс к CardView.
-        cardView.setOnClickListener(new View.OnClickListener() { //При щелчке на CardView вызвать ме
-            // тод onClick() интерфейса Listener
+        cardView.setOnClickListener(new View.OnClickListener() { //При щелчке на CardView вызвать метод onClick() интерфейса Listener
+
             @Override
             public void onClick(View v) {
                 if (listener != null) {

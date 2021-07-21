@@ -16,7 +16,6 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         updateMyDatabase(db, 0, DB_VERSION);
@@ -25,14 +24,12 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
     //при обновлении версии выполняется данный метод
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
         updateMyDatabase(db, oldVersion, newVersion);
     }
 
     //при откате версии выполняется данный метод
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 
     //создаем объект, куда загружаем данные

@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class LogoActivity extends AppCompatActivity {
 TextView textView;
 ImageView imageView;
-private Animation textAnim, imageAnim;//создаем переменные для анимации
+private Animation textAnim;//создаем переменные для анимации
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,6 @@ private Animation textAnim, imageAnim;//создаем переменные дл
         imageView.startAnimation(textAnim); //запускаем анимацию
         textView.startAnimation(textAnim); //запускаем анимацию
         startMainActivity();
-
     }
 
     private void startMainActivity(){

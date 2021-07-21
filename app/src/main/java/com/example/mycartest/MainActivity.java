@@ -39,11 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
     private class SectionsPagerAdapter extends FragmentPagerAdapter {
         public SectionsPagerAdapter(FragmentManager fm) {
-
             super(fm);
         }
         @Override
@@ -58,12 +55,11 @@ public class MainActivity extends AppCompatActivity {
                     return new WorkFragment();
                 case 1:
                     return new TopFragment();
-
-
             }
             return null;
         }
-//добавляем текст на каждую вкладку
+
+        //добавляем текст на каждую вкладку
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
@@ -71,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
                     return getResources().getText(R.string.work_tab);
                 case 1:
                     return getResources().getText(R.string.top_tab);
-
-
             }
             return null;
         }
