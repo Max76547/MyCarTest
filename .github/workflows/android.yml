@@ -5,7 +5,9 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
+env:
+  RELEASE_SIGN_KEY_ALIAS: ${{ secrets.RELEASE_SIGN_KEY_ALIAS }}
+  RELEASE_SIGN_KEY_PASSWORD: ${{ secrets.RELEASE_SIGN_KEY_PASSWORD }}
   
 jobs:
   build:
@@ -19,7 +21,13 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-        
+    - name: Checkout keystore repo
+      uses: actions/checkout@v2
+      with:
+          repository: ${{ secrets.KEYSTORE_GIT_REPOSITORY }}
+          token: ${{ secrets.KEYSTORE_ACCESS_TOKEN }}
+          path: app/keystore
+
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
@@ -28,23 +36,13 @@ jobs:
          ./gradlew assembleRelease
          ./gradlew bundleRelease
       
-    - name: Sign APK
-      uses: r0adkll/sign-android-release@v1
-      # ID used to access action output
-      id: sign_app
+    - name: Upload APK
+      uses: actions/upload-artifact@v2
       with:
-          releaseDirectory: app/build/outputs/apk/release
-          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
-          alias: ${{ secrets.ALIAS }}
-          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.KEY_PASSWORD }}
-
-    - uses: actions/upload-artifact@master
+         name: app-release.apk
+         path: app/build/outputs/apk/release/app-release-unsigned.apk
+    - name: Upload AAB Bundle
+      uses: actions/upload-artifact@v2
       with:
-          name: release.apk
-          path: ${{steps.sign_app.outputs.signedReleaseFile}}
-    - uses: actions/upload-artifact@master
-      with:
-          name: mapping.txt
-          path: app/build/outputs/mapping/release/mapping.txt
-
+         name: app-release.aab
+         path: app/build/outputs/bundle/release/app-release.aab
