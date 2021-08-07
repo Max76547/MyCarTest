@@ -1,18 +1,17 @@
-name: Android CI
+name: Test_and_build_signed_artifacts_on_release
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches:
+      - 'main'
+
 env:
   KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
   RELEASE_SIGN_KEY_ALIAS: ${{ secrets.RELEASE_SIGN_KEY_ALIAS }}
   RELEASE_SIGN_KEY_PASSWORD: ${{ secrets.RELEASE_SIGN_KEY_PASSWORD }}
-  
+
 jobs:
- build_apk_aab:
-    if: startsWith(github.head_ref, 'release/') == true
+  build_apk_aab:
     name: Build release artifacts
     runs-on: ubuntu-20.04
     steps:
