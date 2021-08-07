@@ -37,10 +37,11 @@ jobs:
          ./gradlew bundleRelease
       
     - name: Upload APK
+      if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
          name: app-release.apk
-         path: app/build/outputs/apk/release/app-release-unsigned.apk       
+         path: app/      
     - name: Upload AAB Bundle
       uses: actions/upload-artifact@v2
       with:
