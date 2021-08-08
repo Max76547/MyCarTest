@@ -2,11 +2,11 @@ name: Android CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     tags:
       - 'v*'
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 env:
   KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
   RELEASE_SIGN_KEY_ALIAS: ${{ secrets.RELEASE_SIGN_KEY_ALIAS }}
