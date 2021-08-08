@@ -22,4 +22,15 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew build
+      run: |
+        ./gradlew test
+        ./gradlew assembleRelease
+        ./gradlew bundleRelease
+      
+    - name: CarTest Actions
+      uses: actions/upload-artifact@v2
+      with:
+       name: app-release_car-test.apk
+       path: app/build/outputs/apk/release/app-release-unsigned.apk
+       
+       
