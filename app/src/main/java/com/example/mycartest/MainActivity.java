@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     return new TopFragment();
                 default: 
-                    throw new RuntimeException("Position invalid " + position);
             }
             return null;
         }
@@ -70,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     return getResources().getText(R.string.top_tab);
                 default: 
-                    throw new RuntimeException("Position invalid " + position);
             }
             return null;
         }
