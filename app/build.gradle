@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "com.example.mycartest"
         minSdkVersion 16
-        targetSdkVersion 30
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
 
@@ -43,8 +43,8 @@ android {
        }
     }
     compileOptions {
-        sourceCompatibility JavaVersion_11
-        targetCompatibility JavaVersion_11
+        sourceCompatibility JavaVersion_1_8
+        targetCompatibility JavaVersion_1_8
     }
 }
 
