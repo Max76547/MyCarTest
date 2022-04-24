@@ -17,6 +17,7 @@ jobs:
       matrix:
         distribution: [ 'temurin', 'zulu', 'adopt', 'adopt-openj9', 'liberica', 'microsoft', 'adopt-hotspot']
         java: [ '16', '17' ]
+      fail-fast: false
     name: Java ${{ matrix.Java }} and distribution ${{ matrix.distribution }}
     steps:
     - uses: actions/checkout@v3
