@@ -13,13 +13,17 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ '8', '11', '13', '15' ]
+    name: Java ${{ matrix.Java }}
     steps:
     - uses: actions/checkout@v3
-    - name: set up JDK 17
+    - name: set up ${{ matrix.Java }}
       uses: actions/setup-java@v3
       with:
-        java-version: '17'
-        distribution: 'adopt'
+          distribution: '<distribution>'
+          java-version: ${{ matrix.java }}
     - name: Checkout keystore repo
       uses: actions/checkout@v3
       with:
