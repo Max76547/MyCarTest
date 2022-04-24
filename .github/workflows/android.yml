@@ -15,14 +15,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        distribution: [ 'temurin', 'zulu', 'adopt', 'adopt-openj9', 'liberica', 'microsoft', 'adopt-hotspot']
         java: [ '8', '11', '13', '15' ]
-    name: Java ${{ matrix.Java }}
+    name: Java ${{ matrix.Java }} and distribution ${{ matrix.distribution }}
     steps:
     - uses: actions/checkout@v3
-    - name: set up ${{ matrix.Java }}
+    - name: set up ${{ matrix.Java }} and distribution ${{ matrix.distribution }}
       uses: actions/setup-java@v3
       with:
-          distribution: '<distribution>'
+          distribution: ${{ matrix.distribution }}
           java-version: ${{ matrix.java }}
     - name: Checkout keystore repo
       uses: actions/checkout@v3
