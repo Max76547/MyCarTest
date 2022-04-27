@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     return new WorkFragment();
                 case 1:
                     return new TopFragment();
+                default: 
             }
             return null;
         }
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     return getResources().getText(R.string.work_tab);
                 case 1:
                     return getResources().getText(R.string.top_tab);
+                default: 
             }
             return null;
         }
