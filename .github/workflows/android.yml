@@ -16,14 +16,14 @@ jobs:
     strategy:
       matrix:
         distribution: [ 'temurin', 'zulu', 'adopt', 'adopt-openj9', 'liberica', 'microsoft', 'adopt-hotspot']
-    name: Java 17 and distribution ${{ matrix.distribution }}
+    name: Java 11 and distribution ${{ matrix.distribution }}
     steps:
     - uses: actions/checkout@v3
-    - name: set up Java 17 and distribution ${{ matrix.distribution }}
+    - name: set up Java 11 and distribution ${{ matrix.distribution }}
       uses: actions/setup-java@v3
       with:
           distribution: ${{ matrix.distribution }}
-          java-version: 17
+          java-version: 11
     - name: Checkout keystore repo
       uses: actions/checkout@v3
       with:
