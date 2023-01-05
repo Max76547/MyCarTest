@@ -7,14 +7,14 @@
         android:roundIcon="@drawable/unnamed"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCarTest">
-        <activity android:name=".ChangeData"></activity>
+        <activity android:name=".ChangeData" />
         <activity
             android:name=".work.WorkDetailActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".LogoActivity"
-            android:exported="false"
+            android:exported="true"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -17,6 +17,16 @@
     <string name="add_year">Введите год выпуска</string>
     <string name="add_mileage">Введите пробег</string>
     <string name="my_car">My car</string>
+    <string name="logo_car">Logo Car</string>
+    <string name="next_replacement">следующая замена</string>
+    <string name="Interest">Проценты</string>
+    <string name="mileage">введите пробег</string>
+    <string name="Car_name">Название авто:</string>
+    <string name="Enter_name_car">Введите название авто</string>
+    <string name="Year_issue">Год выпуска:</string>
+    <string name="Enter_year_issue">Введите год выпуска</string>
+    <string name="Mileage">Пробег:</string>
+    <string name="Enter_mileage">Введите пробег</string>
 
     <string-array name="str_work">
         <item>Замены масла</item>

@@ -6,21 +6,18 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.mycartest.CaptionedImagesAdapter;
 import com.example.mycartest.R;
 import com.example.mycartest.sqlite.CarDatabaseHelper;
-
-import java.util.Objects;
 
 
 public class WorkFragment extends Fragment {
@@ -56,7 +53,7 @@ public class WorkFragment extends Fragment {
             Intent intent = new Intent(getActivity(), WorkDetailActivity.class);
             intent.putExtra(WorkDetailActivity.EXTRA_WORK_ID, position);
             intent.putExtra(WorkDetailActivity.EXTRA_MILEAGE, mainMileage);
-            Objects.requireNonNull(getActivity()).startActivity(intent);
+            requireActivity().startActivity(intent);
         });
 
         return workRecycle;
