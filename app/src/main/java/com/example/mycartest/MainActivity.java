@@ -1,16 +1,13 @@
 package com.example.mycartest;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.example.mycartest.work.WorkFragment;
 import com.google.android.material.tabs.TabLayout;
@@ -55,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     return new WorkFragment();
                 case 1:
                     return new TopFragment();
+                default: 
             }
             return null;
         }
@@ -67,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     return getResources().getText(R.string.work_tab);
                 case 1:
                     return getResources().getText(R.string.top_tab);
+                default: 
             }
             return null;
         }

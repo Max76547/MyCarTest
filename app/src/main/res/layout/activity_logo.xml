@@ -37,5 +37,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/unnamed"
-        app:tint="@color/txt_clr_main" />
+        app:tint="@color/txt_clr_main"
+        android:contentDescription="@string/logo_car" />
 </androidx.constraintlayout.widget.ConstraintLayout>

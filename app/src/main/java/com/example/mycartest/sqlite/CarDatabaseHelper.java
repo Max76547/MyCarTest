@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.example.mycartest.R;
 
 public class CarDatabaseHelper extends SQLiteOpenHelper {
 
@@ -18,13 +17,13 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        updateMyDatabase(db, 0, DB_VERSION);
+        updateMyDatabase(db, 0);
     }
 
     //при обновлении версии выполняется данный метод
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        updateMyDatabase(db, oldVersion, newVersion);
+        updateMyDatabase(db, oldVersion);
     }
 
     //при откате версии выполняется данный метод
@@ -43,7 +42,7 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
     }
 
     //заполняем таблицу
-    private void updateMyDatabase(SQLiteDatabase db, int oldVersion, int newVersion) {
+    private void updateMyDatabase(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 1) {
             //создаем базу данных с id строки, именем, пробегом и картинкой
             db.execSQL("CREATE TABLE GENERALDATA ("

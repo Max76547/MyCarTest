@@ -1,24 +1,22 @@
 package com.example.mycartest;
 
-import android.graphics.drawable.Drawable;
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class CaptionedImagesAdapter extends
         RecyclerView.Adapter<CaptionedImagesAdapter.ViewHolder> {
     //для этого мы расширяем класс RecyclerView.Adapter и переопределяем его различные методы
 
-    private String[] captions; //переменные для хнанения строк и id
+    private final String[] captions; //переменные для хнанения строк и id
     private Listener listener; //добавим объект listener
-    private String[] mileage;
-    private String[] nxt_mileage;
+    private final String[] mileage;
+    private final String[] nxt_mileage;
 
     //реализуем интерфейс
     public interface Listener{
@@ -29,7 +27,7 @@ public class CaptionedImagesAdapter extends
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         //указываем, что данный класс использует карточное представление
-        private CardView cardView;
+        private final CardView cardView;
         public ViewHolder(CardView v) {
             super(v); //суперкласс включает метаданные, необходимые для правильной работы адаптера
             cardView = v;
@@ -44,6 +42,7 @@ public class CaptionedImagesAdapter extends
     }
 
     //метод вызывается, когда  RecyclerView требуется создать ViewHolder
+    @NonNull
     @Override
     public CaptionedImagesAdapter.ViewHolder onCreateViewHolder(
             ViewGroup parent, int viewType){
@@ -59,7 +58,7 @@ public class CaptionedImagesAdapter extends
     public int getItemCount(){
         return captions.length; //длина массива равна к-ву элементов данных в RecyclerView
     }
-    //aктивности и фрагменты используют этот метод для регистрации себя в качестве слушателя
+    // Активности и фрагменты используют этот метод для регистрации себя в качестве слушателя
     public void setListener (Listener listener){
         this.listener = listener;
     }
@@ -67,26 +66,23 @@ public class CaptionedImagesAdapter extends
     //RecyclerView вызывает этот метод, когда потребуется использовать (или повторно использовать)
     // ViewHolder для новой порции данных.
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position){
+    public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") final int position){
         //переменную position необходимо снабдить модификатором final,
         //так как она используется во внутреннем классе
         CardView cardView = holder.cardView;
 
-        TextView textView = (TextView)cardView.findViewById(R.id.info_text);
+        TextView textView = cardView.findViewById(R.id.info_text);
         textView.setText(captions[position]);
-        TextView textMileage = (TextView)cardView.findViewById(R.id.mileage_text);
+        TextView textMileage = cardView.findViewById(R.id.mileage_text);
         textMileage.setText(mileage[position]);
-        TextView textNxtMileage = (TextView)cardView.findViewById(R.id.next_mileage_text);
+        TextView textNxtMileage = cardView.findViewById(R.id.next_mileage_text);
         textNxtMileage.setText(nxt_mileage[position]);
 
         //Интерфейс добавляетс к CardView.
-        cardView.setOnClickListener(new View.OnClickListener() { //При щелчке на CardView вызвать метод onClick() интерфейса Listener
-
-            @Override
-            public void onClick(View v) {
-                if (listener != null) {
-                    listener.onClick(position);
-                }
+        //При щелчке на CardView вызвать метод onClick() интерфейса Listener
+        cardView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onClick(position);
             }
         });
     }

@@ -29,14 +29,15 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="40dp"
             android:textColor="@color/black"
             android:text="@string/str_change_mileage"
@@ -60,28 +61,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
             android:background="@android:color/transparent"
             android:focusable="false"
             android:inputType="number"
-            android:text="следующая замена"
+            android:minHeight="48dp"
+            android:text="@string/next_replacement"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toTopOf="@+id/textView9" />
+            app:layout_constraintTop_toTopOf="@+id/textView9"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/edit_change_mileage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
             android:background="@android:color/transparent"
             android:focusable="false"
             android:inputType="number"
-            android:text="введите пробег"
+            android:minHeight="48dp"
+            android:text="@string/mileage"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/textView8"
-            app:layout_constraintTop_toTopOf="@+id/textView8" />
+            app:layout_constraintTop_toTopOf="@+id/textView8"
+            android:autofillHints="" />
 
         <TextView
             android:id="@+id/edit_my_mileage"
@@ -100,7 +103,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginTop="10dp"
             android:textColor="@color/black"
             android:text="@string/str_my_mileage"
@@ -125,7 +127,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:textColor="@color/black"
-            android:layout_marginRight="8dp"
             android:text="@string/str_nxt_change_mileage"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +138,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@android:color/transparent"
-            android:text="Проценты"
+            android:text="@string/Interest"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
